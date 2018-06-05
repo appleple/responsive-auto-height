@@ -1,0 +1,44 @@
+{
+  "name": "responsive-auto-height",
+  "version": "0.0.1",
+  "author": "steelydylan",
+  "description": "JavaScript library to equalize elements's height",
+  "license": "MIT",
+  "scripts": {
+    "test": "npm run lint",
+    "lint": "eslint ./src/index.js --fix",
+    "bundle": "browserify ./src/index.js -t babelify -p licensify --standalone ResponsiveAutoHeight --outfile ./js/responsive-auto-height.js",
+    "minifyjs": "uglifyjs ./js/responsive-auto-height.js --comments 'license' -o ./js/responsive-auto-height.min.js",
+    "build": "npm run bundle && npm run minifyjs",
+    "build:lib": "babel src --out-dir lib",
+    "sync": "browser-sync start --server './' --files './js/*.js' './css/*.css' --startPath '/examples/index.html'",
+    "watch": "watch 'npm run build && npm run build:lib' ./src/",
+    "start": "npm-run-all -p watch sync",
+    "deploy": "np --no-cleanup"
+  },
+  "main": "./lib/index.js",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-es2015": "^6.18.0",
+    "babelify": "^7.3.0",
+    "browser-sync": "^2.18.6",
+    "browserify": "^13.1.1",
+    "co": "^4.6.0",
+    "eslint": "^3.13.0",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-config-airbnb-base": "^11.0.1",
+    "eslint-plugin-import": "^2.2.0",
+    "fs-extra": "^2.1.2",
+    "licensify": "^3.1.2",
+    "node-cmd": "^2.0.0",
+    "np": "^2.16.0",
+    "npm-run-all": "^4.0.2",
+    "uglifyjs": "^2.4.10",
+    "watch": "^1.0.1",
+    "watchify": "^3.7.0"
+  },
+  "dependencies": {
+    "es6-object-assign": "^1.1.0"
+  }
+}

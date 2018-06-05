@@ -2,12 +2,18 @@ import { getOffset } from './util';
 
 export default class ResponsiveAutoHeight {
 
-  constructor(elements, options) {
-    this.elements = typeof elements === 'string' ? document.querySelectorAll(elements) : elements;
+  constructor(selector, options) {
+    this.selector = selector;
+    this.elements = document.querySelectorAll(selector);
     this.options = options;
     window.addEventListener('resize', () => {
       this.run();
     });
+    this.run();
+  }
+
+  recalc() {
+    this.elements = document.querySelectorAll(this.selector);
     this.run();
   }
 
@@ -35,7 +41,7 @@ export default class ResponsiveAutoHeight {
     return group;
   }
 
-  alignHeight(group) {
+  autoHeight(group) {
     const heights = group.map((element) => {
       const computedStyle = getComputedStyle(element);
       const boxSizing = computedStyle.boxSizing;
@@ -56,7 +62,7 @@ export default class ResponsiveAutoHeight {
     const { elements } = this;
     const groups = this.makeGroups(elements);
     groups.forEach((group) => {
-      this.alignHeight(group);
+      this.autoHeight(group);
     });
   }
 }

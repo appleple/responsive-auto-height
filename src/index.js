@@ -36,9 +36,7 @@ export default class ResponsiveAutoHeight {
   }
 
   alignHeight(group) {
-    const heights = group.map(element => {
-      return element.offsetHeight;
-    });
+    const heights = group.map(element => element.offsetHeight);
     const maxHeight = Math.max(...heights);
     group.forEach((element) => {
       element.style.height = `${maxHeight}px`;

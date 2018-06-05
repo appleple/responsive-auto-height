@@ -1,4 +1,4 @@
-# Align Height
+# Responsive AutoHeight
 
 JavaScript library to equalize elements's height
 

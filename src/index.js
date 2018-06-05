@@ -42,7 +42,9 @@ export default class ResponsiveAutoHeight {
       if (boxSizing === 'border-box') {
         return element.offsetHeight;
       }
-      return element.offsetHeight - parseFloat(computedStyle.paddingTop) - parseFloat(computedStyle.paddingBottom);
+      return element.offsetHeight
+        - parseFloat(computedStyle.paddingTop)
+        - parseFloat(computedStyle.paddingBottom);
     });
     const maxHeight = Math.max(...heights);
     group.forEach((element) => {

@@ -5,6 +5,7 @@ JavaScript library to equalize elements's height
 ## Feature
 
 - intuitive
+- you don't have to specify the column number
 
 ## Installation
 

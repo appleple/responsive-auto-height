@@ -36,7 +36,14 @@ export default class ResponsiveAutoHeight {
   }
 
   alignHeight(group) {
-    const heights = group.map(element => element.offsetHeight);
+    const heights = group.map((element) => {
+      const computedStyle = getComputedStyle(element);
+      const boxSizing = computedStyle.boxSizing;
+      if (boxSizing === 'border-box') {
+        return element.offsetHeight;
+      }
+      return element.offsetHeight - parseFloat(computedStyle.paddingTop) - parseFloat(computedStyle.paddingBottom);
+    });
     const maxHeight = Math.max(...heights);
     group.forEach((element) => {
       element.style.height = `${maxHeight}px`;

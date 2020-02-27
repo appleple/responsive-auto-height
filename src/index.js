@@ -4,7 +4,7 @@ export default class ResponsiveAutoHeight {
 
   constructor(selector, options) {
     this.selector = selector;
-    this.elements = document.querySelectorAll(selector);
+    this.elements = typeof selector === 'string' ? document.querySelectorAll(selector) : selector;
     this.options = options;
     window.addEventListener('resize', () => {
       this.run();
